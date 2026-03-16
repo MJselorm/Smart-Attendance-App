@@ -1,0 +1,9 @@
+Camera
+   ↓
+Face Detection (OpenCV)
+   ↓
+Face Recognition
+   ↓
+Attendance Database
+   ↓
+Export to Spreadsheet

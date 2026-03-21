@@ -1,6 +1,7 @@
 import cv2
 import os
 import numpy as np
+import json
 
 dataset_path = "dataset"
 
@@ -33,5 +34,8 @@ recognizer.train(faces, np.array(labels))
 
 recognizer.save("face_model.yml")
 
+# Save label map
+with open("labels.json", "w") as f:
+    json.dump(label_map, f)
+
 print("Model trained successfully")
-print(label_map)

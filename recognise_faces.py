@@ -1,4 +1,11 @@
 import cv2
+import json
+
+# Load label map
+with open("labels.json", "r") as f:
+    label_map = json.load(f)
+
+label_map = {v: k for k, v in label_map.items()}  # Reverse mapping
 
 # Load face detector
 face_cascade = cv2.CascadeClassifier(
@@ -9,11 +16,7 @@ face_cascade = cv2.CascadeClassifier(
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read("face_model.yml")
 
-# Manually recreate label map
-label_map = {
-    0: "John",
-    1: "Ama"
-}
+
 
 # Start camera
 cap = cv2.VideoCapture(0)
@@ -47,7 +50,8 @@ while True:
 
     cv2.imshow("Face Recognition", frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    key= cv2.waitKey(1) & 0xFF
+    if key==ord('q') or key==ord('Q') or key==27:
         break
 
 cap.release()

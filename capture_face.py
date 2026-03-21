@@ -39,9 +39,10 @@ while True:
 
     # stop after 20 images
     if count >= 20:
+    
         break
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    key= cv2.waitKey(1) & 0xFF
+    if key==ord('q') or key==ord('Q') or key==27:
         break
 
 cap.release()
